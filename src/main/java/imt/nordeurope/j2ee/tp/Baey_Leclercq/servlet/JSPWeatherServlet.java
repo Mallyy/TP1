@@ -10,32 +10,48 @@ import java.io.PrintWriter;
 public class JSPWeatherServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        response.setContentType("text/html");
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Weather.jsp");
         requestDispatcher.forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter writer = response.getWriter();
-        response.setContentType("text/html");
-        String name = request.getParameter("country");
-        switch (name){
-            case "France":
-                writer.println("Paris : 21 °C");
-                break;
-            case "Allemagne":
-                writer.println("Berlin : 15°C");
-                break;
-            case "Taiwan":
-                writer.println("Pekin ( Beijing ) : Qui sait ...");
-                break;
-            case "USA":
-                writer.println("Washington  : 45°C");
-                break;
-            default:
-                writer.println("N/A");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Weather.jsp");
+        requestDispatcher.forward(request, response);
 
+        response.setContentType("text/html");
+
+        PrintWriter writer = response.getWriter();
+        if(request.getParameter("country") != null){
+            boolean selected = false;
+            String name = request.getParameter("country");
+            switch (name){
+                case "France":
+                    selected = true;
+                    writer.println("Paris : 3 °C\n");
+                    break;
+                case "Allemagne":
+                    selected = true;
+                    writer.println("Berlin : 15°C\n");
+                    break;
+                case "Taiwan":
+                    selected = true;
+                    writer.println("Pekin ( Beijing ) : Qui sait ...\n");
+                    break;
+                case "USA":
+                    selected = true;
+                    writer.println("Washington  : -8°C\n");
+                    break;
+                default:
+                    selected = false ;
+                    break;
+            }
+            if (selected == true){
+                writer.println("<div style=\"clear:both\"></div>");
+                writer.println("<img style=\"float:left;\" src=\"GraphicWeather?country="+name+"\">");
+            }
         }
+
     }
 }

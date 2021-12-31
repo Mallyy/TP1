@@ -13,20 +13,7 @@ public class SimpleWeatherServlet extends HttpServlet {
         PrintWriter writer = response.getWriter();
         response.setContentType("text/html");
 
-        writer.println("<html><body>");
-        writer.println("<form method='post' >\n" +
-                "    <label for=\"country-select\">Choose a country:</label>\n" +
-                "    <select name=\"country\" id=\"contry-select\">\n" +
-                "        <option value=\"\">--Choisisez un pays--</option>\n" +
-                "        <option value=\"France\">France</option>\n" +
-                "        <option value=\"Germany\">Allemagne</option>\n" +
-                "        <option value=\"USA\">USA</option>\n" +
-                "        <option value=\"England\">Angleterre</option>\n" +
-                "    </select>\n" +
-                "    <button type=\"submit\">OK</button>\n" +
-                "</form>");
-        writer.println("</body></html>");
-
+        print_listcountry(writer);
     }
 
     @Override
@@ -42,11 +29,11 @@ public class SimpleWeatherServlet extends HttpServlet {
             switch (name){
                 case "France":
                     selected = true;
-                    writer.println("Paris : 21 °C\n");
+                    writer.println("Paris : 3 °C\n");
                     break;
                 case "Allemagne":
                     selected = true;
-                    writer.println("Berlin : 15°C\n");
+                    writer.println("Berlin : 22°C\n");
                     break;
                 case "Taiwan":
                     selected = true;
@@ -54,7 +41,7 @@ public class SimpleWeatherServlet extends HttpServlet {
                     break;
                 case "USA":
                     selected = true;
-                    writer.println("Washington  : 45°C\n");
+                    writer.println("Washington  : -8°C\n");
                     break;
                 default:
                     selected = false ;
