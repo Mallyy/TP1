@@ -15,30 +15,29 @@ public class ServletGraphicWeather extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType( "image/jpg" );
-        ServletOutputStream out = response.getOutputStream();
-        int width = 500;
-        int height = 400;
-        BufferedImage bufferedImage = new BufferedImage(width, height,
-                BufferedImage.TYPE_INT_RGB);
-        Graphics2D g2d = bufferedImage.createGraphics();
-        g2d.setColor(Color.WHITE);
-        g2d.fillRect(0, 0, width, height);
 
-        int[] temp = {2, 3, 7,8,5,9,4,1,0,2,0,3,0,1,0,0,0,1,2,2,2,3,4, 7, 8, -1, -2, 0, 4, 24};
-        int i = 0;
-        //draw image
-        g2d.setPaint(Color.white);
-        g2d.setColor(Color.green);
-        g2d.drawLine(0, 0, 0, width);
-        g2d.drawLine(0, height/2, width, height/2);
-        g2d.setColor(Color.red);
-        for(i = 0; i<30; i++) {
-            g2d.drawString(Integer.toString(temp[i]), i*30 + (height - 30*8)/30, - (temp[i]*height/60) - 16);
-            g2d.fill(new Ellipse2D.Float(i * 30 + 10 , -(temp[i]*15) -4, 8, 8));
+        if(request.getParameter("country")!= null) {
+            String country = request.getParameter("country");
+            int[] temp = new int[30];
+
+            switch(country) {
+                case "France":
+                    temp = new int[]{2, 3, 7,8,5,9,4,1,0,2,0,3,0,1,0,0,0,1,2,2,2,3,4, 7, 8, -1, -2, 0, 4, 24};
+                    break;
+                case "Allemagne":
+                    temp = new int[]{18,19,19,20,21,23,23,27,28,25,17,14,14,13,14,13,15,19,22,25,21,24,26,29,31,35,34,32,30,25};
+                    break;
+                case "Taiwan":
+                    temp = new int[]{7,3,9,-7,21,18,4,32,-9,-15,25,34,1,14,0,-9,22,6,17,24,-1,9,-6,13,14,23,-10,31,-11,19,0};
+                    break;
+                case "USA":
+                    temp = new int[]{-5,-7,-9,-11,-12,-14,-13,-16,-7,-8,-6,-7,-4,-3,-1,0,0,-2,2,1,-4,2,-1,3,-4,-1,3,5,4,6,7};
+                    break;
+                default:
+                    break;
+            }
+            creationImage(response, temp);
         }
-        ImageIO.write(bufferedImage, "jpg", out);
-
-        g2d.dispose();
     }
 
     @Override
@@ -46,16 +45,39 @@ public class ServletGraphicWeather extends HttpServlet {
 
     }
 
-    void creationImage(){
-        BufferedImage bufferedImage = new BufferedImage(200, 200,
+    void creationImage(HttpServletResponse response, int[] temp) throws IOException {
+        ServletOutputStream out = response.getOutputStream();
+        int width = 500;
+        int height = 400;
+        int dot = 8;
+        BufferedImage bufferedImage = new BufferedImage(width, height,
                 BufferedImage.TYPE_INT_RGB);
         Graphics2D g2d = bufferedImage.createGraphics();
-        // Draw on the image
+        g2d.setColor(Color.WHITE);
+        g2d.fillRect(0, 0, width, height);
+
+        int i = 0;
+        //draw image
+        g2d.setPaint(Color.white);
+        g2d.setColor(Color.black);
+        g2d.drawLine(4*dot, 0, 4*dot, width);
+        g2d.drawLine(0, 3*height/4, width, 3*height/4);
+        for (int j = -15; j<45; j = j+5){
+            g2d.drawString(Integer.toString(j),  2*dot, - (j*height/55) - 10 + 3*height/4);
+        }
         g2d.setColor(Color.red);
-        g2d.fill(new Ellipse2D.Float(0, 0, 200, 100));
-// Sauver l’image dans le flux de sortie
+        for(i = 0; i<30; i++) {
+            int x = i * width/35 +5*dot;
+            int x2 = (i+1) * width / 35 + 5 * dot + dot/2;
+            int y_dot = -(temp[i]*height/55) -dot/2 +3*height/4;
+            int y2_dot = -(temp[i+1]*height/55) -dot/2 +3*height/4;
+            int y_label = - (temp[i]*height/55) - 10 + 3*height/4;
+            g2d.drawString(Integer.toString(temp[i]),x, y_label);
+            g2d.fill(new Ellipse2D.Float(x , y_dot , dot, dot));
+            g2d.drawLine(x + dot/2, y_dot + dot/2, x2, y2_dot + dot/2);
+        }
+        ImageIO.write(bufferedImage, "jpg", out);
 
         g2d.dispose();
-
     }
 }

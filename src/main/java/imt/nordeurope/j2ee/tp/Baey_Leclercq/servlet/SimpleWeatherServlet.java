@@ -10,7 +10,6 @@ import java.io.PrintWriter;
 public class SimpleWeatherServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         PrintWriter writer = response.getWriter();
         response.setContentType("text/html");
 
@@ -26,7 +25,6 @@ public class SimpleWeatherServlet extends HttpServlet {
                 "    </select>\n" +
                 "    <button type=\"submit\">OK</button>\n" +
                 "</form>");
-
         writer.println("</body></html>");
 
     }
@@ -36,6 +34,40 @@ public class SimpleWeatherServlet extends HttpServlet {
         PrintWriter writer = response.getWriter();
         response.setContentType("text/html");
 
+        print_listcountry(writer);
+
+        if(request.getParameter("country") != null){
+            boolean selected = false;
+            String name = request.getParameter("country");
+            switch (name){
+                case "France":
+                    selected = true;
+                    writer.println("Paris : 21 °C\n");
+                    break;
+                case "Allemagne":
+                    selected = true;
+                    writer.println("Berlin : 15°C\n");
+                    break;
+                case "Taiwan":
+                    selected = true;
+                    writer.println("Pekin ( Beijing ) : Qui sait ...\n");
+                    break;
+                case "USA":
+                    selected = true;
+                    writer.println("Washington  : 45°C\n");
+                    break;
+                default:
+                    selected = false ;
+                    break;
+            }
+            if (selected == true){
+                writer.println("<div style=\"clear:both\"></div>");
+                writer.println("<img style=\"float:left;\" src=\"GraphicWeather?country="+name+"\">");
+            }
+        }
+    }
+
+    void print_listcountry( PrintWriter writer){
         writer.println("<html><body>");
         writer.println("<form method='post' >\n" +
                 "    <label for=\"country-select\">Choose a country:</label>\n" +
@@ -48,31 +80,5 @@ public class SimpleWeatherServlet extends HttpServlet {
                 "    </select>\n" +
                 "    <button type=\"submit\">OK</button>\n" +
                 "</form>");
-
-        String name = request.getParameter("country");
-        switch (name){
-            case "France":
-                writer.println("Paris : 21 °C");
-                break;
-            case "Allemagne":
-                writer.println("Berlin : 15°C");
-                break;
-            case "Taiwan":
-                writer.println("Pekin ( Beijing ) : Qui sait ...");
-                break;
-            case "USA":
-                writer.println("Washington  : 45°C");
-                break;
-                default:
-                    writer.println("N/A");
-
-        }
-        //writer.println(name);
-
-
     }
-
-//    void print_listcountry(){
-//        PrintWriter writer = response.getWriter();
-//    }
 }
