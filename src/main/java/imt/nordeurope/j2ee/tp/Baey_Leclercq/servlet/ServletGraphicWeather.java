@@ -22,16 +22,16 @@ public class ServletGraphicWeather extends HttpServlet {
 
             switch(country) {
                 case "France":
-                    temp = new int[]{2, 3, 7,8,5,9,4,1,0,2,0,3,0,1,0,0,0,1,2,2,2,3,4, 7, 8, -1, -2, 0, 4, 24};
+                    temp = new int[]{2, 3, 7,8,5,9,4,1,0,2,0,3,0,1,0,0,0,1,2,2,2,3,4, 7, 8, -1, -2, 0, 4, 24,5};
                     break;
                 case "Allemagne":
-                    temp = new int[]{18,19,19,20,21,23,23,27,28,25,17,14,14,13,14,13,15,19,22,25,21,24,26,29,31,35,34,32,30,25};
+                    temp = new int[]{18,19,19,20,21,23,23,27,28,25,17,14,14,13,14,13,15,19,22,25,21,24,26,29,31,35,34,32,30,25,22};
                     break;
                 case "Taiwan":
-                    temp = new int[]{7,3,9,-7,21,18,4,32,-9,-15,25,34,1,14,0,-9,22,6,17,24,-1,9,-6,13,14,23,-10,31,-11,19,0};
+                    temp = new int[]{7,3,9,-7,21,18,4,32,-9,-15,25,34,1,14,0,-9,22,6,17,24,-1,9,-6,13,14,23,-10,31,-11,19,3};
                     break;
                 case "USA":
-                    temp = new int[]{-5,-7,-9,-11,-12,-14,-13,-16,-7,-8,-6,-7,-4,-3,-1,0,0,-2,2,1,-4,2,-1,3,-4,-1,3,5,4,6,7};
+                    temp = new int[]{-5,-7,-9,-11,-12,-14,-13,-16,-7,-8,-6,-7,-4,-3,-1,0,0,-2,2,1,-4,2,-1,3,-4,-1,3,5,4,6,0};
                     break;
                 default:
                     break;
@@ -74,7 +74,9 @@ public class ServletGraphicWeather extends HttpServlet {
             int y_label = - (temp[i]*height/55) - 10 + 3*height/4;
             g2d.drawString(Integer.toString(temp[i]),x, y_label);
             g2d.fill(new Ellipse2D.Float(x , y_dot , dot, dot));
-            g2d.drawLine(x + dot/2, y_dot + dot/2, x2, y2_dot + dot/2);
+            if(i < 29){
+                g2d.drawLine(x + dot/2, y_dot + dot/2, x2, y2_dot + dot/2);
+            }
         }
         ImageIO.write(bufferedImage, "jpg", out);
 
