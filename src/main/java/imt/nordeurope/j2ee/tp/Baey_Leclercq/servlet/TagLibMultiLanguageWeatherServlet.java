@@ -32,7 +32,6 @@ public class TagLibMultiLanguageWeatherServlet extends HttpServlet {
         WeatherBean weather = new WeatherBean();
 
         String name = request.getParameter("country");
-        out.println("ici");
         switch (name){
             case "France":
                 weather.setCountry("France");
