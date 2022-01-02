@@ -37,7 +37,6 @@ public class JSPMultiLanguageWeatherServlet extends HttpServlet {
 
         String name = request.getParameter("country");
         String language = request.getParameter("language");
-        out.println("ici");
         switch (name){
             case "France":
                 weather.setCountry("France");
