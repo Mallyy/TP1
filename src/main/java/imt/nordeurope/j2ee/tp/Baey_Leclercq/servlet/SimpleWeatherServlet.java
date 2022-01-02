@@ -10,19 +10,17 @@ import java.io.PrintWriter;
 public class SimpleWeatherServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter writer = response.getWriter();
         response.setContentType("text/html");
-
+        PrintWriter writer = response.getWriter();
         print_listcountry(writer);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PrintWriter writer = response.getWriter();
         response.setContentType("text/html");
 
+        PrintWriter writer = response.getWriter();
         print_listcountry(writer);
-
         if(request.getParameter("country") != null){
             boolean selected = false;
             String name = request.getParameter("country");
@@ -33,7 +31,7 @@ public class SimpleWeatherServlet extends HttpServlet {
                     break;
                 case "Allemagne":
                     selected = true;
-                    writer.println("Berlin : 22°C\n");
+                    writer.println("Berlin : 15°C\n");
                     break;
                 case "Taiwan":
                     selected = true;
@@ -53,7 +51,6 @@ public class SimpleWeatherServlet extends HttpServlet {
             }
         }
     }
-
     void print_listcountry( PrintWriter writer){
         writer.println("<html><body>");
         writer.println("<form method='post' >\n" +
