@@ -24,8 +24,8 @@
 
 <h1>Weather ( tld )</h1>
 <div style="alignment: right">
-    <a href="/TagLibMultiLanguageWeather?lang=fr" type="button">FR</a>
-    <a href="/TagLibMultiLanguageWeather?lang=en" type="button">ENG</a>
+    <a href="TagLibMultiLanguageWeather?lang=fr" type="button">FR</a>
+    <a href="TagLibMultiLanguageWeather?lang=en" type="button">ENG</a>
 </div>
 <form method="post" action="JSPMultiLanguageWeather">
     <label for="country-select"><% resources.getString("labelCountry");%></label>
