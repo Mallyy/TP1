@@ -1,34 +1,27 @@
 <%--
   Created by IntelliJ IDEA.
-  User: marie
+  User: vinci
   Date: 02/01/2022
-  Time: 13:39
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page import="java.io.PrintWriter" %>
-<%@ page import="java.util.*" %>
-<%@ page import="org.nordeurope.j2ee.tp.Baey_Leclercq.beans.WeatherBean" %>
-<%@ page import="java.util.Objects" %><%--
-  Created by IntelliJ IDEA.
-  User: marie
-  Date: 29/12/2021
-  Time: 19:32
+  Time: 15:01
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="i18nWeatherTagLib" uri="WEB-INF/tlds/tp.tld"%>
 <html>
 <head>
-    <title>JSP Weather-en</title>
+    <title>Wi18nWeatherTagLibeather-Tld</title>
 </head>
 <body>
-<h1>Weather-en ( jsp )</h1>
+<i18nWeatherTagLib:i18nWeather lang='<%=request.getParameter("lang")%>
+
+<h1>Weather ( tld )</h1>
+<div style="alignment: right">
+    <a href="/TagLibMultiLanguageWeather?lang=fr" type="button">FR</a>
+    <a href="/TagLibMultiLanguageWeather?lang=eng" type="button">ENG</a>
+    <button>FR</button>
+    <button>ENG</button>
+</div>
 <form method="post" action="JSPMultiLanguageWeather">
-    <label for="language-select">Language:</label>
-    <select name="language" id="language-select">
-        <option value="">-choose a language--</option>
-        <option value="fr">Francais</option>
-        <option value="en">English</option>
-    </select>
     <label for="country-select">Country:</label>
     <select name="country" id="country-select">
         <option value="">--Please choose a country--</option>
@@ -40,8 +33,9 @@
     <button type="submit">OK</button>
 </form>
 
-<p ${weather.selected == false ? 'hidden' : ''}> ${weather.country}: in city of ${weather.capital} (capital), the temperature is of${weather.temperature}</p>
+<p ${weather.selected == false ? ' hidden' : ''}> ${weather.country}: in city of ${weather.capital} (capital), the temperature is ${weather.temperature}</p>
 <div style=\"clear:both\"></div>
 <image style="float: left " ${weather.selected == false || weather == null ? 'hidden' : ''} src="GraphicWeather?country=${weather.country}">
 </body>
 </html>
+

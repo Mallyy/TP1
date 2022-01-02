@@ -6,13 +6,21 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="tagWeather" uri="imt.nordeurope.j2ee.tp.Baey_Leclercq.tag.I18NWeather"%>
+<%@ taglib prefix="WeatherTL" uri="WEB-INF/tlds/tp.tld"%>
 <html>
 <head>
-    <title>Weather-Tld</title>
+    <title>Wi18nWeatherTagLibeather-Tld</title>
 </head>
 <body>
+<WeatherTL:i18nWeather lang='<%=request.getParameter("lang")%>
+
 <h1>Weather ( tld )</h1>
+<div style="alignment: right">
+    <a href="/TagLibMultiLanguageWeather?lang=fr" type="button">FR</a>
+    <a href="/TagLibMultiLanguageWeather?lang=eng" type="button">ENG</a>
+    <button>FR</button>
+    <button>ENG</button>
+</div>
 <form method="post" action="JSPMultiLanguageWeather">
     <label for="country-select">Country:</label>
     <select name="country" id="country-select">
@@ -25,7 +33,7 @@
     <button type="submit">OK</button>
 </form>
 
-<p ${weather.selected == false ? 'hidden' : ''}> ${weather.country}: in city of ${weather.capital} (capital), the temperature is ${weather.temperature}</p>
+<p ${weather.selected == false ? ' hidden' : ''}> ${weather.country}: in city of ${weather.capital} (capital), the temperature is ${weather.temperature}</p>
 <div style=\"clear:both\"></div>
 <image style="float: left " ${weather.selected == false || weather == null ? 'hidden' : ''} src="GraphicWeather?country=${weather.country}">
 </body>

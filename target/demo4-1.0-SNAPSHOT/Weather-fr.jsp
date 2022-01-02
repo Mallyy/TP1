@@ -12,18 +12,18 @@
 </head>
 <body>
 <h1>Weather-fr ( jsp )</h1>
-<form method="post" action="JSPMultiLanguageWeather">    <label for="language-select">Pays:</label>
+<form method="post" action="JSPMultiLanguageWeather">    <label for="language-select">Langage:</label>
   <select name="language" id="language-select">
-    <option value="">-choose a language--</option>
+    <option value="">-Choisissez un langage--</option>
     <option value="fr">Francais</option>
     <option value="en">English</option>
   </select>
   <label for="country-select">Pays:</label>
   <select name="country" id="country-select">
-    <option value="">--Please choose a country--</option>
+    <option value="">--Choisissez un pays--</option>
     <option value="France">France</option>
-    <option value="Allemagne">Germany</option>
-    <option value="USA">USA</option>
+    <option value="Allemagne">Allemagne</option>
+    <option value="USA">Etats Unis</option>
     <option value="Taiwan">Taiwan</option>
   </select>
   <button type="submit">OK</button>

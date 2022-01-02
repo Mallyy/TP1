@@ -21,7 +21,7 @@ public class TagLibMultiLanguageWeatherServlet extends HttpServlet {
         weather.setTemperature(null);
         request.setAttribute("weather", weather);
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Weather.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/tldsWeather.jsp");
         requestDispatcher.forward(request, response);
     }
 
@@ -66,7 +66,7 @@ public class TagLibMultiLanguageWeatherServlet extends HttpServlet {
         }
         request.setAttribute("weather", weather);
 
-        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Weather.jsp");
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher("/tldsWeather.jsp");
         requestDispatcher.forward(request, response);
     }
 }

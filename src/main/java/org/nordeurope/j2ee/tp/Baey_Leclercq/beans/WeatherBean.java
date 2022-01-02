@@ -11,6 +11,7 @@ public class WeatherBean implements Serializable {
     String temperature;
     String language =null;
 
+
     public WeatherBean() {
         selected = false;
     }

@@ -4,6 +4,16 @@ import javax.servlet.jsp.tagext.TagSupport;
 public class I18NWeather extends TagSupport {
     public String lang;
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String key;
+
     public String getLang() {
         return lang;
     }
