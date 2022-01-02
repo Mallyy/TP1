@@ -20,7 +20,7 @@
 
     <jsp-config>
         <taglib>
-            <taglib-uri>imt.nordeurope.j2ee.tp.Baey_Leclercq.tag.I18NWeather</taglib-uri>
+            <taglib-uri>imt.nordeurope.j2ee.tp.Baey_Leclercq.tag</taglib-uri>
             <taglib-location>/WEB-INF/tlds/tp.tld</taglib-location>
         </taglib>
     </jsp-config>

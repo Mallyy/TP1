@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 public class tagWeather extends ResourceBundle {
     @Override
     protected Object handleGetObject(String key) {
-        Object value = null;
+        Object value;
         switch (key){
             case "labelCountry":
                 value = "Country:";

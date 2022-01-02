@@ -3,8 +3,8 @@
         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
     <tlib-version>2.0</tlib-version>
     <jsp-version>2.0</jsp-version>
-    <short-name>HelloWorld</short-name>
-    <uri>org.mines.douai.taglib</uri>
+    <short-name>i18nWeather</short-name>
+    <uri>imt.nordeurope.j2ee.tp.Baey_Leclercq.tag</uri>
     <tag>
         <name>i18nWeather</name>
         <tag-class>imt.nordeurope.j2ee.tp.Baey_Leclercq.tag.I18NWeather</tag-class>
@@ -15,10 +15,5 @@
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
         </attribute>
-        <!--<attribute>
-            <name>key</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
-        </attribute>-->
     </tag>
 </taglib>

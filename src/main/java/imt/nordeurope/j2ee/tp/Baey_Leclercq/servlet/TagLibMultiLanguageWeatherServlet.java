@@ -7,9 +7,7 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-import static java.lang.System.out;
-
-@WebServlet(name = "TagLibMultiLanguageWeatherServlet", value = "/TagLibMultiLanguageWeather")
+@WebServlet(name = "TagLibMultiLanguageWeather", value = "/TagLibMultiLanguageWeather")
 public class TagLibMultiLanguageWeatherServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

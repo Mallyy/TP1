@@ -12,5 +12,11 @@
 <p>To invoke the another servlet click <a href="MyServlet">here</a></p>
 
 <p>To invoke the simple weather Servlet click <a href="SimpleWeather">here</a></p>
+
+<p>To invoke the jsp weather Servlet click <a href="JSPWeather">here</a></p>
+
+<p>To invoke the jsp multilanguage weather Servlet click <a href="/JSPMultiLanguageWeather">here</a></p>
+
+<p>To invoke the tagmlib weather Servlet click <a href="/TagLibMultiLanguageWeather">here</a></p>
 </body>
 </html>
