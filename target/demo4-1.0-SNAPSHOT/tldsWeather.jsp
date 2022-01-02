@@ -6,13 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="i18nWeatherTagLib" uri="WEB-INF/tlds/tp.tld"%>
+<%@ taglib prefix="WeatherTL" uri="WEB-INF/tlds/tp.tld"%>
 <html>
 <head>
     <title>Wi18nWeatherTagLibeather-Tld</title>
 </head>
 <body>
-<i18nWeatherTagLib:i18nWeather lang='<%=request.getParameter("lang")%>
+<WeatherTL:i18nWeather lang='<%=request.getParameter("lang")%>
 
 <h1>Weather ( tld )</h1>
 <div style="alignment: right">
