@@ -1,4 +1,4 @@
-package imt.nordeurope.j2ee.tp.Baey_Leclercq.ressources;
+package imt.nordeurope.j2ee.tp.Baey_Leclercq.resources;
 
 import java.util.Enumeration;
 import java.util.ResourceBundle;

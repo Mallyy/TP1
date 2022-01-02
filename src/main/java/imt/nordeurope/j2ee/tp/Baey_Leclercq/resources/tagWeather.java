@@ -1,9 +1,9 @@
-package imt.nordeurope.j2ee.tp.Baey_Leclercq.ressources;
+package imt.nordeurope.j2ee.tp.Baey_Leclercq.resources;
 
 import java.util.Enumeration;
 import java.util.ResourceBundle;
 
-public class tagWeather_en extends ResourceBundle {
+public class tagWeather extends ResourceBundle {
     @Override
     protected Object handleGetObject(String key) {
         Object value = null;

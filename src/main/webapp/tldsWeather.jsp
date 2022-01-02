@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.Locale" %>
+<%@ page import="java.util.ResourceBundle" %><%--
   Created by IntelliJ IDEA.
   User: vinci
   Date: 02/01/2022
@@ -12,28 +13,31 @@
     <title>Wi18nWeatherTagLibeather-Tld</title>
 </head>
 <body>
-<WeatherTL:i18nWeather lang='<%=request.getParameter("lang")%>
+<WeatherTL:i18nWeather lang='<%=request.getParameter("lang")%>' />
+
+<%
+    Locale currentLocale = new Locale(request.getAttribute("lang").toString());
+    ResourceBundle resources = ResourceBundle.getBundle("imt.nordeurope.j2ee.tp.Baey_Leclercq.resources.tagWeather", currentLocale);
+%>
 
 <h1>Weather ( tld )</h1>
 <div style="alignment: right">
     <a href="/TagLibMultiLanguageWeather?lang=fr" type="button">FR</a>
     <a href="/TagLibMultiLanguageWeather?lang=eng" type="button">ENG</a>
-    <button>FR</button>
-    <button>ENG</button>
 </div>
 <form method="post" action="JSPMultiLanguageWeather">
-    <label for="country-select">Country:</label>
+    <label for="country-select"><% resources.getString("labelCountry");%></label>
     <select name="country" id="country-select">
-        <option value="">--Please choose a country--</option>
-        <option value="France">France</option>
-        <option value="Allemagne">Germany</option>
-        <option value="USA">USA</option>
-        <option value="Taiwan">Taiwan</option>
+        <option value=""<% resources.getString("selection");%>/option>
+        <option value="France"><% resources.getString("fr");%></option>
+        <option value="Allemagne"><% resources.getString("ge");%></option>
+        <option value="USA"><% resources.getString("us");%></option>
+        <option value="Taiwan"><% resources.getString("tw");%></option>
     </select>
     <button type="submit">OK</button>
 </form>
 
-<p ${weather.selected == false ? ' hidden' : ''}> ${weather.country}: in city of ${weather.capital} (capital), the temperature is ${weather.temperature}</p>
+<p ${weather.selected == false ? ' hidden' : ''}> ${weather.country}<% resources.getString("s1");%>${weather.capital}<% resources.getString("s2");%>${weather.temperature}</p>
 <div style=\"clear:both\"></div>
 <image style="float: left " ${weather.selected == false || weather == null ? 'hidden' : ''} src="GraphicWeather?country=${weather.country}">
 </body>
