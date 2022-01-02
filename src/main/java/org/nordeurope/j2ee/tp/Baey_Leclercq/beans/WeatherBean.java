@@ -9,6 +9,7 @@ public class WeatherBean implements Serializable {
     String country;
     String capital;
     String temperature;
+    String language =null;
 
     public WeatherBean() {
         selected = false;
@@ -45,4 +46,8 @@ public class WeatherBean implements Serializable {
     public void setTemperature(String temperature) {
         this.temperature = temperature;
     }
+
+    public String getLanguage() {return language;}
+
+    public void setLanguage(String language) {this.language = language;}
 }

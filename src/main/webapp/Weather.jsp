@@ -27,7 +27,7 @@
     <button type="submit">OK</button>
 </form>
 
-<p ${weather.selected == false ? 'hidden' : ''}> ${weather.country}: dans la capitale de ${weather.capital}, la température est de ${weather.temperature}</p>
+<p ${weather.selected == false ? 'hidden' : ''}> ${weather.country}: dans la capital du pays ,  ${weather.capital}, la température est de ${weather.temperature}</p>
 <div style=\"clear:both\"></div>
 <image style="float: left " ${weather.selected == false || weather == null ? 'hidden' : ''} src="GraphicWeather?country=${weather.country}">
 </body>
