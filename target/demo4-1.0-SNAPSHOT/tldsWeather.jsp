@@ -27,21 +27,21 @@
     <a href="TagLibMultiLanguageWeather?lang=fr" type="button">FR</a>
     <a href="TagLibMultiLanguageWeather?lang=en" type="button">ENG</a>
 </div>
-<form method="post" action="JSPMultiLanguageWeather">
-    <label for="country-select"><% resources.getString("labelCountry");%></label>
+<form method="post" action="TagLibMultiLanguageWeather">
+    <label for="country-select"><%=resources.getString("labelCountry")%></label>
     <select name="country" id="country-select">
-        <option value=""<% resources.getString("selection");%>/option>
-        <option value="France"><% resources.getString("fr");%></option>
-        <option value="Allemagne"><% resources.getString("ge");%></option>
-        <option value="USA"><% resources.getString("us");%></option>
-        <option value="Taiwan"><% resources.getString("tw");%></option>
+        <option value=""><%=resources.getString("selection")%></option>
+        <option value="France"><%=resources.getString("fr")%></option>
+        <option value="Allemagne"><%=resources.getString("ge")%></option>
+        <option value="USA"><%=resources.getString("us")%></option>
+        <option value="Taiwan"><%=resources.getString("tw")%></option>
     </select>
     <button type="submit">OK</button>
 </form>
 
-<p ${weather.selected == false ? ' hidden' : ''}> ${weather.country}<% resources.getString("s1");%>${weather.capital}<% resources.getString("s2");%>${weather.temperature}</p>
+<p ${weather.selected == false ? ' hidden' : ''}> ${weather.country}<%=resources.getString("s1")%>${weather.capital}<%=resources.getString("s2")%>${weather.temperature}</p>
 <div style=\"clear:both\"></div>
-<image style="float: left " ${weather.selected == false || weather == null ? 'hidden' : ''} src="GraphicWeather?country=${weather.country}">
+<image style="float: left " ${weather.selected == false || weather == null ? 'hidden' : ''} src="GraphicWeather?country=<%out.print(request.getParameter("country"));%>">
 </body>
 </html>
 

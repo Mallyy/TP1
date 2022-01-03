@@ -30,7 +30,7 @@ public class tagWeather_en extends ResourceBundle {
                 value = ": in capital city of ";
                 break;
             case "s2":
-                value = ", the temperature is of";
+                value = ", the temperature is of ";
                 break;
             default:
                 value = null;
